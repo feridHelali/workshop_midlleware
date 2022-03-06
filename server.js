@@ -5,14 +5,14 @@ const app=express()
 
 
 
-app.get('/',[mlError,m1,m2],function(req,res){
+app.get('/',[m1,m2],function(req,res){
     console.log(req.passedValue);
 
     console.log('GET / request Handler is running');
     res.json({message:"API response on GET /"})
 })
 
-
+app.use(mlError);
 
 app.listen(3000,function(){
     console.log('Server Listening on http://localhost:3000')
