@@ -1,16 +1,22 @@
 const express = require('express');
 const res = require('express/lib/response');
+const ressourceRouter=require('./routes/route');
 
 const app=express()
 
 
 
-app.get('/',[m1,m2],function(req,res){
+app.get('/',function(req,res,next){
+  console.log('Yet anodher midlleware');
+  next()
+},[m1,m2],function(req,res){
     console.log(req.passedValue);
 
     console.log('GET / request Handler is running');
     res.json({message:"API response on GET /"})
-})
+});
+
+app.use('/ressource',ressourceRouter);
 
 app.use(mlError);
 
